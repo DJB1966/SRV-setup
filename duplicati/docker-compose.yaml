@@ -1,0 +1,19 @@
+---
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Australia/Sydney
+      - SETTINGS_ENCRYPTION_KEY=8574Zx8574
+      - CLI_ARGS= #optional
+      - DUPLICATI__WEBSERVICE_PASSWORD=xxxxxxx
+    volumes:
+      - /home/djb66/Docker/srv/duplicati/config:/config
+      - /mnt/Pi5-srv_ssd1/Pi5:/backups
+      - /:/source
+    ports:
+      - 8200:8200
+    restart: unless-stopped
