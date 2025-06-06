@@ -25,7 +25,7 @@ source stats_env/bin/activate
 --------------------------------------------
      Next, we will install the Adafruit Blinka library using the following commands. Confirm "Y" when prompted to reboot at the end of the installation.
 --------------------------------------------
-cd %USERPROFILE%
+cd ~
 
 pip install --upgrade adafruit-python-shell
 
