@@ -15,8 +15,8 @@ services:
       TZ: 'Europe/London'
       WEBPASSWORD: '8574@Pihole@' #update password
     volumes:
-      - '/home/djb66/Docker/pihole/etc-pihole:/etc/pihole' #update location
-      - '/home/djb66/Docker/pihole/etc-dnsmasq.d:/etc/dnsmasq.d' #update location
+      - '/home/djb66/Docker/Apps/pihole/etc-pihole:/etc/pihole' #update location
+      - '/home/djb66/Docker/Apps/pihole/etc-dnsmasq.d:/etc/dnsmasq.d' #update location
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
