@@ -1,14 +1,17 @@
-version: '3'
 services:
   filebrowser:
-    image: filebrowser/filebrowser:latest
-    container_name: filebrowser
-    volumes:
-      - /:/srv #Change to match your directory
-      - /home/djb66/Docker/srv/filebrowser/filebrowser.db:/database/filebrowser.db #Change to match your directory
-      - /home/djb66/Docker/srv/filebrowser/settings.json:/config/settings.json #Change to match your directory
     environment:
-      - PUID=$(1000)
-      - PGID=$(1000)
+      FILEBROWSER_CONFIG: "data/config.yaml"
+      FILEBROWSER_ADMIN_PASSWORD: admin
+      TZ: "Australia/Sydney" # optionally set your local timezone https://en.wi>
+    volumes:
+      - '/:/folder' # Never mount root "/" directory to docker, always choose a>
+      - './data:/home/filebrowser/data' # mount the data folder you created wit>
+      # Advanced: If you plan to run with a different user besides root or file>
+      #- './tmp/:/home/filebrowser/tmp/'
     ports:
-      - 8095:80 #Change the port if needed
+      - '8080:80' # the left 80 is the port **you will use** to access. The rig>
+    image: gtstef/filebrowser
+    # Optionally run as non-root filebrowser user
+    #user: filebrowser
+    restart: unless-stopped
